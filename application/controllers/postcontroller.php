@@ -129,7 +129,7 @@ class PostController extends Controller {
         exit;
     }
 
-    public function api_post_get(){
+    public function api_get(){
 
         $this->doNotRenderHeader = true;
 

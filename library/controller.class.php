@@ -40,6 +40,7 @@ Abstract class Controller
             $this->_request = $_REQUEST;
         }
 
+
         /*
         switch($this->method) {
             case 'DELETE':
@@ -110,24 +111,26 @@ Abstract class Controller
 
     public function beforeAction(){
 
-        //get user auth details;
-        $auth = $this->getAuth();
-        Logger::log( var_export($auth, true) );
+        if (!$this->_is_api){
+            //get user auth details;
+            $auth = $this->getAuth();
+            Logger::log( var_export($auth, true) );
 
-        if ( !in_array($this->_action, array('login')) ){
-            if (!$auth){
-                //default /index/login
-                header("location: " . SITE_URL );
-                exit;
+            if ( !in_array($this->_action, array('login')) ){
+                if (!$auth){
+                    //default /index/login
+                    header("location: " . SITE_URL );
+                    exit;
+                }
             }
-        }
 
-        //set the navigation
-        $this->set("navigation", $this->getNavigation());
+            //set the navigation
+            $this->set("navigation", $this->getNavigation());
 
-        //do not render template is it is an ajax call
-        if ($this->_request['is_ajax']) {
-            $this->doNotRenderHeader = true;
+            //do not render template is it is an ajax call
+            if ($this->_request['is_ajax']) {
+                $this->doNotRenderHeader = true;
+            }
         }
 
     }

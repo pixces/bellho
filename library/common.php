@@ -107,7 +107,8 @@ function callHook()
 
         #check if the url starts with api, then append method to the call
         if (preg_match('/^api/',$url)){
-            $url = $url."get/";
+            //$url = $url."get/";
+            $url = $url.strtolower($request['http_method'])."/";
             $request['request_type'] = 'api';
         }
         unset($request['url']);
