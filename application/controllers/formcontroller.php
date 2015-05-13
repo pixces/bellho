@@ -56,6 +56,7 @@ class FormController extends Controller {
         if ($post_summary > 0){
             $model->setOffset(($this->_currentPage - 1) * $model->getLimit() );
 
+
             //get the forms for the page;
             $formList = $model->getAll();
             //get total forms
