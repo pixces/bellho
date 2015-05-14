@@ -24,15 +24,20 @@
     <div class="clearfix"></div>
 </div>
 <ul class="list-panel">
-    <?php if ($postList){ ?>
-    <?php foreach($postList as $post){ ?>
-    <li  class="item media">
-      
-        <div class="media-body pull-left">
-            <section><span class="title"><?=$post->title; ?></span></section>
-            <p><?=  ($post->form_json); ?></p>
+    <?php if ($formCount){ ?>
+    <?php foreach($formCollection as $formData){ ?>
+    <li  id="form-<?=$formData['id']; ?>"  class="item media">
+        <input class="pull-left" type="checkbox" name="postId[]" value="<?=$post->id; ?>">
+        <div class="pull-left">
+            <div class="row" style="padding-bottom:10px">
+            <section><span class="title span8"><?=$formData['title']; ?></span><span class="muted span2"><i class="icon-calendar"></i>  <?=date('l, d M Y', strtotime($formData['date'])); ?></span> </section>
+            </div>
+            <ul class="form-list">
+                <?php foreach($formData['details'] as $field => $value){ ?>
+                <li><b><?=strtoupper($field); ?> : </b><?=$value; ?></li>
+                <?php } ?>
+            </ul>
         </div>
-      
     </li>
     <?php } } else { ?>
         <h5>No Forms found for this Status.<br>Please check other status.</h5>

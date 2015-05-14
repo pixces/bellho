@@ -3,6 +3,7 @@
 $routing = array(
     //'/admin\/(.*?)\/(.*?)\/(.*)/' 	        => 'admin/\1_\2/\3',
     //'/admin\/(.*?)\/(.*?)\/(.*)/' 	        => '\1/admin_\2/\3',
+    '/index\/(.*?)\/(.*)/'                       => 'index/\1/\2',
     '/api\/v1\/(.*?)\/(.*)/'                    => '\1/api_\2',          //todo: make it more meaningful
     '/stream\/(.*?)\/(.*)/'                     => 'stream/\1/\2',
     '/call\/(.*?)\/(.*)/'                       => 'call/\1/\2',
@@ -12,5 +13,5 @@ $routing = array(
     '/(.*?)\/(.*)/'                             => '\1/\2'
 );
 
-$default['controller'] = 'index';
-$default['action'] = 'login';
+$default['controller'] = 'post';
+$default['action'] = 'index';

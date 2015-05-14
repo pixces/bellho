@@ -24,12 +24,13 @@ function setEnvironment()
         ini_set('error_log', ROOT . DS . 'tmp' . DS . 'error.log');
 
         //create connection params
-        define("DB_USER", "");
-        define("DB_PASSWORD", "");
+        define("DB_USER", "bellhow");
+        define("DB_PASSWORD", "GgU7397qheQx");
         define("DB_NAME", "");
-        define("DB_HOST", "");
-        define('DB_CHARSET', '');
+        define("DB_HOST", "myjiradb.cuqmhlcee6g7.us-east-1.rds.amazonaws.com");
+        define('DB_CHARSET', 'utf8');
         define('DB_COLLATE', '');
+        define('DB_PORT', '3306');
 
     }
 }
@@ -98,7 +99,7 @@ function callHook()
 {
     #get the request_method
     #get the request query
-    $query = $_SERVER['QUERY_STRING'];
+    echo $query = $_SERVER['QUERY_STRING'];
 
     if ($query){
         parse_str($query,$request);

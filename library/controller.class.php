@@ -16,9 +16,21 @@ Abstract class Controller
 
     function __construct($controller, $action)
     {
+        /*
         #define request methods and request params
-        header("Access-Control-Allow-Orgin: *");
-        header("Access-Control-Allow-Methods: *");
+        #to handle CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST');
+        header("Access-Control-Allow-Headers: X-Requested-With");
+
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+        }
+        */
 
         if (isset($_REQUEST['request_type']) && $_REQUEST['request_type'] == 'api'){
             //header('content-type: application/json; charset=utf-8');
@@ -116,13 +128,14 @@ Abstract class Controller
             $auth = $this->getAuth();
             Logger::log( var_export($auth, true) );
 
+            /*
             if ( !in_array($this->_action, array('login')) ){
                 if (!$auth){
                     //default /index/login
                     header("location: " . SITE_URL );
                     exit;
                 }
-            }
+            }*/
 
             //set the navigation
             $this->set("navigation", $this->getNavigation());
